@@ -4,7 +4,7 @@ on:
   push:
 jobs:
   zap-owasp:
-    uses: bcgov/pipeline-templates/.github/workflows/owasp-scan.yaml@main
+    uses: llowgn/pipeline-templates/.github/workflows/owasp-scan.yaml@main
     with:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
       ZAP_TARGET_URL: http://www.itsecgames.com
