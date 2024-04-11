@@ -122,12 +122,12 @@ td {
 
 	<h2>
 		
-		Site: http://www.itsecgames.com
 		
+		Sites: //www.mmebvba.com http://www.itsecgames.com
 	</h2>
 
 	<h3>
-		Generated on Thu, 11 Apr 2024 18:55:34
+		Generated on Thu, 11 Apr 2024 20:01:34
 	</h3>
 
 	<h3>
@@ -161,7 +161,7 @@ td {
 					<div>Medium</div>
 				</td>
 				<td align="center">
-					<div>3</div>
+					<div>5</div>
 				</td>
 			</tr>
 			<tr>
@@ -177,7 +177,7 @@ td {
 					<div>Informational</div>
 				</td>
 				<td align="center">
-					<div>7</div>
+					<div>8</div>
 				</td>
 			</tr>
 			<tr>
@@ -203,24 +203,34 @@ td {
 					align="center">Number of Instances</th>
 			</tr>
 			<tr>
+				<td><a href="#40038">Bypassing 403</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">4</td>
+			</tr>
+			<tr>
 				<td><a href="#10038">Content Security Policy (CSP) Header Not Set</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">7</td>
+				<td align="center">8</td>
+			</tr>
+			<tr>
+				<td><a href="#10106">HTTP Only Site</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">1</td>
 			</tr>
 			<tr>
 				<td><a href="#10020">Missing Anti-clickjacking Header</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">5</td>
+				<td align="center">6</td>
 			</tr>
 			<tr>
 				<td><a href="#90003">Sub Resource Integrity Attribute Missing</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">5</td>
+				<td align="center">6</td>
 			</tr>
 			<tr>
 				<td><a href="#10063">Permissions Policy Header Not Set</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">8</td>
+				<td align="center">9</td>
 			</tr>
 			<tr>
 				<td><a href="#10021">X-Content-Type-Options Header Missing</a></td>
@@ -262,12 +272,196 @@ td {
 				<td align="center" class="risk-0">Informational</td>
 				<td align="center">11</td>
 			</tr>
+			<tr>
+				<td><a href="#10104">User Agent Fuzzer</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">48</td>
+			</tr>
 		</table>
 		<div class="spacer-lg"></div>
 	
 
 	
 		<h3>Alert Detail</h3>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="40038"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">Bypassing 403</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Bypassing 403 endpoints may be possible, the scan rule sent a payload that caused the response to be accessible (status code 200).</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">x-original-url: /downloads</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">http://www.itsecgames.com/downloads</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">x-original-url: /images</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">http://www.itsecgames.com/images</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">x-original-url: /js</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">http://www.itsecgames.com/js</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">x-original-url: /stylesheets</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">http://www.itsecgames.com/stylesheets</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">4</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://www.acunetix.com/blog/articles/a-fresh-look-on-reverse-proxy-related-attacks/">https://www.acunetix.com/blog/articles/a-fresh-look-on-reverse-proxy-related-attacks/</a>
+							<br />
+						
+							<a href="https://i.blackhat.com/us-18/Wed-August-8/us-18-Orange-Tsai-Breaking-Parser-Logic-Take-Your-Path-Normalization-Off-And-Pop-0days-Out-2.pdf">https://i.blackhat.com/us-18/Wed-August-8/us-18-Orange-Tsai-Breaking-Parser-Logic-Take-Your-Path-Normalization-Off-And-Pop-0days-Out-2.pdf</a>
+							<br />
+						
+							<a href="https://www.contextis.com/en/blog/server-technologies-reverse-proxy-bypass">https://www.contextis.com/en/blog/server-technologies-reverse-proxy-bypass</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/40038/">40038</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
 		
 			<table class="results">
 				<tr height="24">
@@ -291,6 +485,37 @@ td {
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="http://www.itsecgames.com">http://www.itsecgames.com</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -506,7 +731,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">7</td>
+					<td width="80%">8</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -560,6 +785,94 @@ td {
 			<table class="results">
 				<tr height="24">
 					<th width="20%" class="risk-2"><a
+						id="10106"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">HTTP Only Site</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The site is only served under HTTP and not HTTPS.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com">http://www.itsecgames.com</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Different Hosts.
+ZAP attempted to connect via: https://www.mmebvba.com</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Configure your web or application server to use SSL (https).</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html</a>
+							<br />
+						
+							<a href="https://letsencrypt.org/">https://letsencrypt.org/</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/311.html">311</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">4</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10106/">10106</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
 						id="10020"></a>
 						<div>Medium</div></th>
 					<th class="risk-2">Missing Anti-clickjacking Header</th>
@@ -579,6 +892,37 @@ td {
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="http://www.itsecgames.com">http://www.itsecgames.com</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">x-frame-options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -732,7 +1076,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">5</td>
+					<td width="80%">6</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -820,6 +1164,37 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://fonts.googleapis.com/css?family=Architects+Daughter&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="http://www.itsecgames.com/bugs.htm">http://www.itsecgames.com/bugs.htm</a></td>
 					</tr>
 					<tr>
@@ -943,7 +1318,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">5</td>
+					<td width="80%">6</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -998,6 +1373,37 @@ td {
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="http://www.itsecgames.com">http://www.itsecgames.com</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1244,7 +1650,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">8</td>
+					<td width="80%">9</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1311,6 +1717,38 @@ td {
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="http://www.itsecgames.com">http://www.itsecgames.com</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">x-content-type-options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1439,38 +1877,6 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="http://www.itsecgames.com/images/favicon.ico">http://www.itsecgames.com/images/favicon.ico</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">x-content-type-options</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/images/linkedin.png">http://www.itsecgames.com/images/linkedin.png</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1917,7 +2323,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/robots.txt">http://www.itsecgames.com/robots.txt</a></td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1948,7 +2354,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/sitemap.xml">http://www.itsecgames.com/sitemap.xml</a></td>
+						<td width="80%"><a href="http://www.itsecgames.com/robots.txt">http://www.itsecgames.com/robots.txt</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2063,7 +2469,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/robots.txt">http://www.itsecgames.com/robots.txt</a></td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2094,7 +2500,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/sitemap.xml">http://www.itsecgames.com/sitemap.xml</a></td>
+						<td width="80%"><a href="http://www.itsecgames.com/robots.txt">http://www.itsecgames.com/robots.txt</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2209,7 +2615,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/robots.txt">http://www.itsecgames.com/robots.txt</a></td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2240,7 +2646,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/sitemap.xml">http://www.itsecgames.com/sitemap.xml</a></td>
+						<td width="80%"><a href="http://www.itsecgames.com/robots.txt">http://www.itsecgames.com/robots.txt</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2355,7 +2761,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/robots.txt">http://www.itsecgames.com/robots.txt</a></td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2386,7 +2792,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/sitemap.xml">http://www.itsecgames.com/sitemap.xml</a></td>
+						<td width="80%"><a href="http://www.itsecgames.com/robots.txt">http://www.itsecgames.com/robots.txt</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2501,7 +2907,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/bugs.htm">http://www.itsecgames.com/bugs.htm</a></td>
+						<td width="80%"><a href="http://www.itsecgames.com/">http://www.itsecgames.com/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2532,7 +2938,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://www.itsecgames.com/download.htm">http://www.itsecgames.com/download.htm</a></td>
+						<td width="80%"><a href="http://www.itsecgames.com/bugs.htm">http://www.itsecgames.com/bugs.htm</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2857,6 +3263,1543 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/10049/">10049</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10104"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">User Agent Fuzzer</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/downloads">http://www.itsecgames.com/downloads</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">msnbot/1.1 (+http://search.msn.com/msnbot.htm)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/images">http://www.itsecgames.com/images</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">msnbot/1.1 (+http://search.msn.com/msnbot.htm)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/js">http://www.itsecgames.com/js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">msnbot/1.1 (+http://search.msn.com/msnbot.htm)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://www.itsecgames.com/stylesheets">http://www.itsecgames.com/stylesheets</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">msnbot/1.1 (+http://search.msn.com/msnbot.htm)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">48</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://owasp.org/wstg">https://owasp.org/wstg</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10104/">10104</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>

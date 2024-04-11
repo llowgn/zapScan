@@ -1,14 +1,73 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Thu, 11 Apr 2024 18:55:34",
+	"@generated": "Thu, 11 Apr 2024 20:01:34",
 	"site":[ 
+		{
+			"@name": "//www.mmebvba.com",
+			"@host": "//www.mmebvba.com",
+			"@port": "80",
+			"@ssl": "false",
+			"alerts": [ 
+			]
+		},
 		{
 			"@name": "http://www.itsecgames.com",
 			"@host": "www.itsecgames.com",
 			"@port": "80",
 			"@ssl": "false",
 			"alerts": [ 
+				{
+					"pluginid": "40038",
+					"alertRef": "40038",
+					"alert": "Bypassing 403",
+					"name": "Bypassing 403",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Bypassing 403 endpoints may be possible, the scan rule sent a payload that caused the response to be accessible (status code 200).</p>",
+					"instances":[ 
+						{
+							"uri": "http://www.itsecgames.com/",
+							"method": "GET",
+							"param": "",
+							"attack": "x-original-url: /downloads",
+							"evidence": "",
+							"otherinfo": "http://www.itsecgames.com/downloads"
+						},
+						{
+							"uri": "http://www.itsecgames.com/",
+							"method": "GET",
+							"param": "",
+							"attack": "x-original-url: /images",
+							"evidence": "",
+							"otherinfo": "http://www.itsecgames.com/images"
+						},
+						{
+							"uri": "http://www.itsecgames.com/",
+							"method": "GET",
+							"param": "",
+							"attack": "x-original-url: /js",
+							"evidence": "",
+							"otherinfo": "http://www.itsecgames.com/js"
+						},
+						{
+							"uri": "http://www.itsecgames.com/",
+							"method": "GET",
+							"param": "",
+							"attack": "x-original-url: /stylesheets",
+							"evidence": "",
+							"otherinfo": "http://www.itsecgames.com/stylesheets"
+						}
+					],
+					"count": "4",
+					"solution": "",
+					"otherinfo": "<p>http://www.itsecgames.com/downloads</p>",
+					"reference": "<p>https://www.acunetix.com/blog/articles/a-fresh-look-on-reverse-proxy-related-attacks/</p><p>https://i.blackhat.com/us-18/Wed-August-8/us-18-Orange-Tsai-Breaking-Parser-Logic-Take-Your-Path-Normalization-Off-And-Pop-0days-Out-2.pdf</p><p>https://www.contextis.com/en/blog/server-technologies-reverse-proxy-bypass</p>",
+					"cweid": "0",
+					"wascid": "0",
+					"sourceid": "4319"
+				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038-1",
@@ -21,6 +80,14 @@
 					"instances":[ 
 						{
 							"uri": "http://www.itsecgames.com",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -76,13 +143,40 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "7",
+					"count": "8",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10106",
+					"alertRef": "10106",
+					"alert": "HTTP Only Site",
+					"name": "HTTP Only Site",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>The site is only served under HTTP and not HTTPS.</p>",
+					"instances":[ 
+						{
+							"uri": "http://www.itsecgames.com",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Different Hosts.\nZAP attempted to connect via: https://www.mmebvba.com"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Configure your web or application server to use SSL (https).</p>",
+					"otherinfo": "<p>Different Hosts.</p><p>ZAP attempted to connect via: https://www.mmebvba.com</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html</p><p>https://letsencrypt.org/</p>",
+					"cweid": "311",
+					"wascid": "4",
+					"sourceid": "3938"
 				},
 				{
 					"pluginid": "10020",
@@ -103,6 +197,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "http://www.itsecgames.com/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "http://www.itsecgames.com/bugs.htm",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -135,13 +237,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "6",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90003",
@@ -162,6 +264,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "http://www.itsecgames.com/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=Architects+Daughter\">",
+							"otherinfo": ""
+						},
+						{
 							"uri": "http://www.itsecgames.com/bugs.htm",
 							"method": "GET",
 							"param": "",
@@ -194,13 +304,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "6",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10063",
@@ -214,6 +324,14 @@
 					"instances":[ 
 						{
 							"uri": "http://www.itsecgames.com",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -277,13 +395,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "8",
+					"count": "9",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10021",
@@ -297,6 +415,14 @@
 					"instances":[ 
 						{
 							"uri": "http://www.itsecgames.com",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "http://www.itsecgames.com/",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -329,14 +455,6 @@
 						},
 						{
 							"uri": "http://www.itsecgames.com/images/favicon.ico",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "http://www.itsecgames.com/images/linkedin.png",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -390,7 +508,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10094",
@@ -417,7 +535,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "94"
+					"sourceid": "96"
 				},
 				{
 					"pluginid": "10027",
@@ -444,7 +562,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "29"
+					"sourceid": "34"
 				},
 				{
 					"pluginid": "90005",
@@ -465,7 +583,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://www.itsecgames.com/robots.txt",
+							"uri": "http://www.itsecgames.com/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -473,7 +591,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://www.itsecgames.com/sitemap.xml",
+							"uri": "http://www.itsecgames.com/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -487,7 +605,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -508,7 +626,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://www.itsecgames.com/robots.txt",
+							"uri": "http://www.itsecgames.com/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -516,7 +634,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://www.itsecgames.com/sitemap.xml",
+							"uri": "http://www.itsecgames.com/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -530,7 +648,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -551,7 +669,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://www.itsecgames.com/robots.txt",
+							"uri": "http://www.itsecgames.com/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -559,7 +677,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://www.itsecgames.com/sitemap.xml",
+							"uri": "http://www.itsecgames.com/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -573,7 +691,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -594,7 +712,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://www.itsecgames.com/robots.txt",
+							"uri": "http://www.itsecgames.com/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -602,7 +720,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://www.itsecgames.com/sitemap.xml",
+							"uri": "http://www.itsecgames.com/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -616,7 +734,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -637,7 +755,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "http://www.itsecgames.com/bugs.htm",
+							"uri": "http://www.itsecgames.com/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -645,7 +763,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "http://www.itsecgames.com/download.htm",
+							"uri": "http://www.itsecgames.com/bugs.htm",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -723,7 +841,410 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10104",
+					"alertRef": "10104",
+					"alert": "User Agent Fuzzer",
+					"name": "User Agent Fuzzer",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.</p>",
+					"instances":[ 
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/downloads",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "msnbot/1.1 (+http://search.msn.com/msnbot.htm)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/images",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "msnbot/1.1 (+http://search.msn.com/msnbot.htm)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/js",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "msnbot/1.1 (+http://search.msn.com/msnbot.htm)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://www.itsecgames.com/stylesheets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "msnbot/1.1 (+http://search.msn.com/msnbot.htm)",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "48",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/wstg</p>",
+					"cweid": "0",
+					"wascid": "0",
+					"sourceid": "1416"
 				}
 			]
 		}
