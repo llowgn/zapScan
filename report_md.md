@@ -9,8 +9,8 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 | --- | --- |
 | High | 0 |
 | Medium | 3 |
-| Low | 3 |
-| Informational | 8 |
+| Low | 2 |
+| Informational | 7 |
 
 
 
@@ -19,20 +19,18 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 
 | Name | Risk Level | Number of Instances |
 | --- | --- | --- |
-| CSP: Wildcard Directive | Medium | 3 |
-| CSP: script-src unsafe-inline | Medium | 3 |
-| CSP: style-src unsafe-inline | Medium | 3 |
-| In Page Banner Information Leak | Low | 2 |
-| Permissions Policy Header Not Set | Low | 3 |
-| Server Leaks Version Information via "Server" HTTP Response Header Field | Low | 3 |
-| Loosely Scoped Cookie | Informational | 1 |
-| Modern Web Application | Informational | 1 |
-| Re-examine Cache-control Directives | Informational | 1 |
-| Sec-Fetch-Dest Header is Missing | Informational | 2 |
-| Sec-Fetch-Mode Header is Missing | Informational | 2 |
-| Sec-Fetch-Site Header is Missing | Informational | 2 |
-| Sec-Fetch-User Header is Missing | Informational | 2 |
-| Storable and Cacheable Content | Informational | 3 |
+| Content Security Policy (CSP) Header Not Set | Medium | 6 |
+| Missing Anti-clickjacking Header | Medium | 4 |
+| Sub Resource Integrity Attribute Missing | Medium | 5 |
+| Permissions Policy Header Not Set | Low | 8 |
+| X-Content-Type-Options Header Missing | Low | 11 |
+| Base64 Disclosure | Informational | 1 |
+| Information Disclosure - Suspicious Comments | Informational | 1 |
+| Sec-Fetch-Dest Header is Missing | Informational | 3 |
+| Sec-Fetch-Mode Header is Missing | Informational | 3 |
+| Sec-Fetch-Site Header is Missing | Informational | 3 |
+| Sec-Fetch-User Header is Missing | Informational | 3 |
+| Storable and Cacheable Content | Informational | 11 |
 
 
 
@@ -41,7 +39,7 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 
 
 
-### [ CSP: Wildcard Directive ](https://www.zaproxy.org/docs/alerts/10055/)
+### [ Content Security Policy (CSP) Header Not Set ](https://www.zaproxy.org/docs/alerts/10038/)
 
 
 
@@ -49,204 +47,182 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 
 ### Description
 
-Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
+Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
 
-* URL: https://abcd.google0.ca
-  * Method: `GET`
-  * Parameter: `Content-Security-Policy`
-  * Attack: ``
-  * Evidence: `default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;`
-  * Other Info: `The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: 
-img-src, frame-ancestors, form-action
-
-The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.`
-* URL: https://abcd.google0.ca/robots.txt
-  * Method: `GET`
-  * Parameter: `Content-Security-Policy`
-  * Attack: ``
-  * Evidence: `default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;`
-  * Other Info: `The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: 
-img-src, frame-ancestors, form-action
-
-The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.`
-* URL: https://abcd.google0.ca/sitemap.xml
-  * Method: `GET`
-  * Parameter: `Content-Security-Policy`
-  * Attack: ``
-  * Evidence: `default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;`
-  * Other Info: `The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: 
-img-src, frame-ancestors, form-action
-
-The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.`
-
-Instances: 3
-
-### Solution
-
-Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.
-
-### Reference
-
-
-* [ https://www.w3.org/TR/CSP/ ](https://www.w3.org/TR/CSP/)
-* [ https://caniuse.com/#search=content+security+policy ](https://caniuse.com/#search=content+security+policy)
-* [ https://content-security-policy.com/ ](https://content-security-policy.com/)
-* [ https://github.com/HtmlUnit/htmlunit-csp ](https://github.com/HtmlUnit/htmlunit-csp)
-* [ https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources ](https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources)
-
-
-#### CWE Id: [ 693 ](https://cwe.mitre.org/data/definitions/693.html)
-
-
-#### WASC Id: 15
-
-#### Source ID: 3
-
-### [ CSP: script-src unsafe-inline ](https://www.zaproxy.org/docs/alerts/10055/)
-
-
-
-##### Medium (High)
-
-### Description
-
-Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
-
-* URL: https://abcd.google0.ca
-  * Method: `GET`
-  * Parameter: `Content-Security-Policy`
-  * Attack: ``
-  * Evidence: `default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;`
-  * Other Info: `script-src includes unsafe-inline.`
-* URL: https://abcd.google0.ca/robots.txt
-  * Method: `GET`
-  * Parameter: `Content-Security-Policy`
-  * Attack: ``
-  * Evidence: `default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;`
-  * Other Info: `script-src includes unsafe-inline.`
-* URL: https://abcd.google0.ca/sitemap.xml
-  * Method: `GET`
-  * Parameter: `Content-Security-Policy`
-  * Attack: ``
-  * Evidence: `default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;`
-  * Other Info: `script-src includes unsafe-inline.`
-
-Instances: 3
-
-### Solution
-
-Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.
-
-### Reference
-
-
-* [ https://www.w3.org/TR/CSP/ ](https://www.w3.org/TR/CSP/)
-* [ https://caniuse.com/#search=content+security+policy ](https://caniuse.com/#search=content+security+policy)
-* [ https://content-security-policy.com/ ](https://content-security-policy.com/)
-* [ https://github.com/HtmlUnit/htmlunit-csp ](https://github.com/HtmlUnit/htmlunit-csp)
-* [ https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources ](https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources)
-
-
-#### CWE Id: [ 693 ](https://cwe.mitre.org/data/definitions/693.html)
-
-
-#### WASC Id: 15
-
-#### Source ID: 3
-
-### [ CSP: style-src unsafe-inline ](https://www.zaproxy.org/docs/alerts/10055/)
-
-
-
-##### Medium (High)
-
-### Description
-
-Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
-
-* URL: https://abcd.google0.ca
-  * Method: `GET`
-  * Parameter: `Content-Security-Policy`
-  * Attack: ``
-  * Evidence: `default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;`
-  * Other Info: `style-src includes unsafe-inline.`
-* URL: https://abcd.google0.ca/robots.txt
-  * Method: `GET`
-  * Parameter: `Content-Security-Policy`
-  * Attack: ``
-  * Evidence: `default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;`
-  * Other Info: `style-src includes unsafe-inline.`
-* URL: https://abcd.google0.ca/sitemap.xml
-  * Method: `GET`
-  * Parameter: `Content-Security-Policy`
-  * Attack: ``
-  * Evidence: `default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;`
-  * Other Info: `style-src includes unsafe-inline.`
-
-Instances: 3
-
-### Solution
-
-Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.
-
-### Reference
-
-
-* [ https://www.w3.org/TR/CSP/ ](https://www.w3.org/TR/CSP/)
-* [ https://caniuse.com/#search=content+security+policy ](https://caniuse.com/#search=content+security+policy)
-* [ https://content-security-policy.com/ ](https://content-security-policy.com/)
-* [ https://github.com/HtmlUnit/htmlunit-csp ](https://github.com/HtmlUnit/htmlunit-csp)
-* [ https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources ](https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources)
-
-
-#### CWE Id: [ 693 ](https://cwe.mitre.org/data/definitions/693.html)
-
-
-#### WASC Id: 15
-
-#### Source ID: 3
-
-### [ In Page Banner Information Leak ](https://www.zaproxy.org/docs/alerts/10009/)
-
-
-
-##### Low (High)
-
-### Description
-
-The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.
-
-* URL: https://abcd.google0.ca/robots.txt
+* URL: http://www.itsecgames.com
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Apache/2.4.52`
-  * Other Info: `There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.`
-* URL: https://abcd.google0.ca/sitemap.xml
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/bugs.htm
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Apache/2.4.52`
-  * Other Info: `There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.`
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/download.htm
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/index.htm
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/robots.txt
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/training.htm
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
 
-Instances: 2
+Instances: 6
 
 ### Solution
 
-Configure the server to prevent such information leaks. For example:
-Under Tomcat this is done via the "server" directive and implementation of custom error pages.
-Under Apache this is done via the "ServerSignature" and "ServerTokens" directives.
+Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.
 
 ### Reference
 
 
-* [ https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/ ](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/)
+* [ https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy ](https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy)
+* [ https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html ](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html)
+* [ https://www.w3.org/TR/CSP/ ](https://www.w3.org/TR/CSP/)
+* [ https://w3c.github.io/webappsec-csp/ ](https://w3c.github.io/webappsec-csp/)
+* [ https://web.dev/articles/csp ](https://web.dev/articles/csp)
+* [ https://caniuse.com/#feat=contentsecuritypolicy ](https://caniuse.com/#feat=contentsecuritypolicy)
+* [ https://content-security-policy.com/ ](https://content-security-policy.com/)
 
 
-#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
+#### CWE Id: [ 693 ](https://cwe.mitre.org/data/definitions/693.html)
 
 
-#### WASC Id: 13
+#### WASC Id: 15
+
+#### Source ID: 3
+
+### [ Missing Anti-clickjacking Header ](https://www.zaproxy.org/docs/alerts/10020/)
+
+
+
+##### Medium (Medium)
+
+### Description
+
+The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.
+
+* URL: http://www.itsecgames.com/bugs.htm
+  * Method: `GET`
+  * Parameter: `x-frame-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/download.htm
+  * Method: `GET`
+  * Parameter: `x-frame-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/index.htm
+  * Method: `GET`
+  * Parameter: `x-frame-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/training.htm
+  * Method: `GET`
+  * Parameter: `x-frame-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+
+Instances: 4
+
+### Solution
+
+Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.
+If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's "frame-ancestors" directive.
+
+### Reference
+
+
+* [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options)
+
+
+#### CWE Id: [ 1021 ](https://cwe.mitre.org/data/definitions/1021.html)
+
+
+#### WASC Id: 15
+
+#### Source ID: 3
+
+### [ Sub Resource Integrity Attribute Missing ](https://www.zaproxy.org/docs/alerts/90003/)
+
+
+
+##### Medium (High)
+
+### Description
+
+The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. 
+
+* URL: http://www.itsecgames.com
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
+  * Other Info: ``
+* URL: http://www.itsecgames.com/bugs.htm
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
+  * Other Info: ``
+* URL: http://www.itsecgames.com/download.htm
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
+  * Other Info: ``
+* URL: http://www.itsecgames.com/index.htm
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
+  * Other Info: ``
+* URL: http://www.itsecgames.com/training.htm
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
+  * Other Info: ``
+
+Instances: 5
+
+### Solution
+
+Provide a valid integrity attribute to the tag.
+
+### Reference
+
+
+* [ https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity ](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
+
+
+#### CWE Id: [ 345 ](https://cwe.mitre.org/data/definitions/345.html)
+
+
+#### WASC Id: 15
 
 #### Source ID: 3
 
@@ -260,26 +236,56 @@ Under Apache this is done via the "ServerSignature" and "ServerTokens" directive
 
 Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.
 
-* URL: https://abcd.google0.ca
+* URL: http://www.itsecgames.com
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://abcd.google0.ca/robots.txt
+* URL: http://www.itsecgames.com/bugs.htm
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://abcd.google0.ca/sitemap.xml
+* URL: http://www.itsecgames.com/download.htm
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/index.htm
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/js/html5.js
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/robots.txt
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/sitemap.xml
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/training.htm
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
 
-Instances: 3
+Instances: 8
 
 ### Solution
 
@@ -302,47 +308,142 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 #### Source ID: 3
 
-### [ Server Leaks Version Information via "Server" HTTP Response Header Field ](https://www.zaproxy.org/docs/alerts/10036/)
+### [ X-Content-Type-Options Header Missing ](https://www.zaproxy.org/docs/alerts/10021/)
 
 
 
-##### Low (High)
+##### Low (Medium)
 
 ### Description
 
-The web/application server is leaking version information via the "Server" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.
+The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.
 
-* URL: https://abcd.google0.ca
+* URL: http://www.itsecgames.com
   * Method: `GET`
-  * Parameter: ``
+  * Parameter: `x-content-type-options`
   * Attack: ``
-  * Evidence: `Apache/2.4.52 (Ubuntu)`
-  * Other Info: ``
-* URL: https://abcd.google0.ca/robots.txt
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: http://www.itsecgames.com/bugs.htm
   * Method: `GET`
-  * Parameter: ``
+  * Parameter: `x-content-type-options`
   * Attack: ``
-  * Evidence: `Apache/2.4.52 (Ubuntu)`
-  * Other Info: ``
-* URL: https://abcd.google0.ca/sitemap.xml
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: http://www.itsecgames.com/download.htm
   * Method: `GET`
-  * Parameter: ``
+  * Parameter: `x-content-type-options`
   * Attack: ``
-  * Evidence: `Apache/2.4.52 (Ubuntu)`
-  * Other Info: ``
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: http://www.itsecgames.com/downloads/vulnerabilities.txt
+  * Method: `GET`
+  * Parameter: `x-content-type-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: http://www.itsecgames.com/images/favicon.ico
+  * Method: `GET`
+  * Parameter: `x-content-type-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: http://www.itsecgames.com/images/linkedin.png
+  * Method: `GET`
+  * Parameter: `x-content-type-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: http://www.itsecgames.com/images/mme.png
+  * Method: `GET`
+  * Parameter: `x-content-type-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: http://www.itsecgames.com/images/twitter.png
+  * Method: `GET`
+  * Parameter: `x-content-type-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: http://www.itsecgames.com/js/html5.js
+  * Method: `GET`
+  * Parameter: `x-content-type-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: http://www.itsecgames.com/stylesheets/stylesheet.css
+  * Method: `GET`
+  * Parameter: `x-content-type-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: http://www.itsecgames.com/training.htm
+  * Method: `GET`
+  * Parameter: `x-content-type-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
 
-Instances: 3
+Instances: 11
 
 ### Solution
 
-Ensure that your web server, application server, load balancer, etc. is configured to suppress the "Server" header or provide generic details.
+Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.
+If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.
 
 ### Reference
 
 
-* [ https://httpd.apache.org/docs/current/mod/core.html#servertokens ](https://httpd.apache.org/docs/current/mod/core.html#servertokens)
-* [ https://learn.microsoft.com/en-us/previous-versions/msp-n-p/ff648552(v=pandp.10) ](https://learn.microsoft.com/en-us/previous-versions/msp-n-p/ff648552(v=pandp.10))
-* [ https://www.troyhunt.com/shhh-dont-let-your-response-headers/ ](https://www.troyhunt.com/shhh-dont-let-your-response-headers/)
+* [ https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85) ](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85))
+* [ https://owasp.org/www-community/Security_Headers ](https://owasp.org/www-community/Security_Headers)
+
+
+#### CWE Id: [ 693 ](https://cwe.mitre.org/data/definitions/693.html)
+
+
+#### WASC Id: 15
+
+#### Source ID: 3
+
+### [ Base64 Disclosure ](https://www.zaproxy.org/docs/alerts/10094/)
+
+
+
+##### Informational (Medium)
+
+### Description
+
+Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).
+
+* URL: http://www.itsecgames.com/downloads/bWAPP_intro.pdf
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `8/Filter/DCTDecode/Interpolate`
+  * Other Info: `��b�׫�0��(u�Ȟ׫��Z�`
+
+Instances: 1
+
+### Solution
+
+Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.
+
+### Reference
+
+
+* [ https://projects.webappsec.org/w/page/13246936/Information%20Leakage ](https://projects.webappsec.org/w/page/13246936/Information%20Leakage)
 
 
 #### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
@@ -352,7 +453,7 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 #### Source ID: 3
 
-### [ Loosely Scoped Cookie ](https://www.zaproxy.org/docs/alerts/90033/)
+### [ Information Disclosure - Suspicious Comments ](https://www.zaproxy.org/docs/alerts/10027/)
 
 
 
@@ -360,110 +461,26 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 ### Description
 
-Cookies can be scoped by domain or path. This check is only concerned with domain scope.The domain scope applied to a cookie determines which domains can access it. For example, a cookie can be scoped strictly to a subdomain e.g. www.nottrusted.com, or loosely scoped to a parent domain e.g. nottrusted.com. In the latter case, any subdomain of nottrusted.com can access the cookie. Loosely scoped cookies are common in mega-applications like google.com and live.com. Cookies set from a subdomain like app.foo.bar are transmitted only to that domain by the browser. However, cookies scoped to a parent-level domain may be transmitted to the parent, or any subdomain of the parent.
+The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.
 
-* URL: https://abcd.google0.ca
+* URL: http://www.itsecgames.com/js/html5.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-  * Other Info: `The origin domain used for comparison was: 
-abcd.google0.ca
-CrmOwinAuth=ABCD
-`
+  * Evidence: `select`
+  * Other Info: `The following pattern was used: \bSELECT\b and was detected in the element starting with: "(function(a,b){function h(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerH", see evidence field for the suspicious comment/snippet.`
 
 Instances: 1
 
 ### Solution
 
-Always scope cookies to a FQDN (Fully Qualified Domain Name).
-
-### Reference
-
-
-* [ https://tools.ietf.org/html/rfc6265#section-4.1 ](https://tools.ietf.org/html/rfc6265#section-4.1)
-* [ https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html ](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html)
-* [ https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies ](https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies)
-
-
-#### CWE Id: [ 565 ](https://cwe.mitre.org/data/definitions/565.html)
-
-
-#### WASC Id: 15
-
-#### Source ID: 3
-
-### [ Modern Web Application ](https://www.zaproxy.org/docs/alerts/10109/)
-
-
-
-##### Informational (Medium)
-
-### Description
-
-The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.
-
-* URL: https://abcd.google0.ca
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `<script>
-
-
-                document.cookie = "Cookie001=001; expires=Thu, 31 Dec 2024 12:00:00 UTC; path=/; SameSite=None; Secure; domain=.google0.ca;";
-                document.cookie = "Cookie002=002; expires=Thu, 31 Dec 2024 12:00:00 UTC; path=/; SameSite=None; Secure; domain=.google0.ca;";
-                document.cookie = "Cookie003=003; expires=Thu, 31 Dec 2024 12:00:00 UTC; path=/; SameSite=None; Secure; domain=.google0.ca;";
-
-
-
-        </script>`
-  * Other Info: `No links have been found while there are scripts, which is an indication that this is a modern web application.`
-
-Instances: 1
-
-### Solution
-
-This is an informational alert and so no changes are required.
+Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.
 
 ### Reference
 
 
 
-
-#### Source ID: 3
-
-### [ Re-examine Cache-control Directives ](https://www.zaproxy.org/docs/alerts/10015/)
-
-
-
-##### Informational (Low)
-
-### Description
-
-The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.
-
-* URL: https://abcd.google0.ca
-  * Method: `GET`
-  * Parameter: `cache-control`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-
-Instances: 1
-
-### Solution
-
-For secure content, ensure the cache-control HTTP header is set with "no-cache, no-store, must-revalidate". If an asset should be cached consider setting the directives "public, max-age, immutable".
-
-### Reference
-
-
-* [ https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching ](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching)
-* [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
-* [ https://grayduck.mn/2021/09/13/cache-control-recommendations/ ](https://grayduck.mn/2021/09/13/cache-control-recommendations/)
-
-
-#### CWE Id: [ 525 ](https://cwe.mitre.org/data/definitions/525.html)
+#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
 
 
 #### WASC Id: 13
@@ -480,20 +497,26 @@ For secure content, ensure the cache-control HTTP header is set with "no-cache, 
 
 Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.
 
-* URL: https://abcd.google0.ca
+* URL: http://www.itsecgames.com
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://abcd.google0.ca/robots.txt
+* URL: http://www.itsecgames.com/robots.txt
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Dest`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
 
-Instances: 2
+Instances: 3
 
 ### Solution
 
@@ -522,20 +545,26 @@ Ensure that Sec-Fetch-Dest header is included in request headers.
 
 Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.
 
-* URL: https://abcd.google0.ca
+* URL: http://www.itsecgames.com
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://abcd.google0.ca/robots.txt
+* URL: http://www.itsecgames.com/robots.txt
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Mode`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
 
-Instances: 2
+Instances: 3
 
 ### Solution
 
@@ -564,20 +593,26 @@ Ensure that Sec-Fetch-Mode header is included in request headers.
 
 Specifies the relationship between request initiator's origin and target's origin.
 
-* URL: https://abcd.google0.ca
+* URL: http://www.itsecgames.com
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://abcd.google0.ca/robots.txt
+* URL: http://www.itsecgames.com/robots.txt
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Site`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
 
-Instances: 2
+Instances: 3
 
 ### Solution
 
@@ -606,20 +641,26 @@ Ensure that Sec-Fetch-Site header is included in request headers.
 
 Specifies if a navigation request was initiated by a user.
 
-* URL: https://abcd.google0.ca
+* URL: http://www.itsecgames.com
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://abcd.google0.ca/robots.txt
+* URL: http://www.itsecgames.com/robots.txt
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-User`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://www.itsecgames.com/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
 
-Instances: 2
+Instances: 3
 
 ### Solution
 
@@ -648,26 +689,74 @@ Ensure that Sec-Fetch-User header is included in user initiated requests.
 
 The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where "shared" caching servers such as "proxy" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.
 
-* URL: https://abcd.google0.ca
+* URL: http://www.itsecgames.com
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: https://abcd.google0.ca/robots.txt
+* URL: http://www.itsecgames.com/bugs.htm
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: https://abcd.google0.ca/sitemap.xml
+* URL: http://www.itsecgames.com/download.htm
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
+* URL: http://www.itsecgames.com/downloads/vulnerabilities.txt
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
+* URL: http://www.itsecgames.com/images/favicon.ico
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
+* URL: http://www.itsecgames.com/images/mme.png
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
+* URL: http://www.itsecgames.com/js/html5.js
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
+* URL: http://www.itsecgames.com/robots.txt
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
+* URL: http://www.itsecgames.com/sitemap.xml
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
+* URL: http://www.itsecgames.com/stylesheets/stylesheet.css
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
+* URL: http://www.itsecgames.com/training.htm
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
 
-Instances: 3
+Instances: 11
 
 ### Solution
 
