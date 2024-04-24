@@ -10,7 +10,7 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 | High | 0 |
 | Medium | 2 |
 | Low | 4 |
-| Informational | 6 |
+| Informational | 7 |
 
 
 
@@ -25,6 +25,7 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 | Permissions Policy Header Not Set | Low | 3 |
 | Server Leaks Version Information via "Server" HTTP Response Header Field | Low | 3 |
 | X-Content-Type-Options Header Missing | Low | 1 |
+| Loosely Scoped Cookie | Informational | 1 |
 | Re-examine Cache-control Directives | Informational | 1 |
 | Sec-Fetch-Dest Header is Missing | Informational | 3 |
 | Sec-Fetch-Mode Header is Missing | Informational | 3 |
@@ -49,19 +50,19 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 
 Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/robots.txt
+* URL: https://123132346.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/sitemap.xml
+* URL: https://123132346.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -103,7 +104,7 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: `x-frame-options`
   * Attack: ``
@@ -140,13 +141,13 @@ If you expect the page to be framed only by pages on your server (e.g. it's part
 
 The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.
 
-* URL: https://google0.ca/robots.txt
+* URL: https://123132346.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `Apache/2.4.52`
   * Other Info: `There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.`
-* URL: https://google0.ca/sitemap.xml
+* URL: https://123132346.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -184,19 +185,19 @@ Under Apache this is done via the "ServerSignature" and "ServerTokens" directive
 
 Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/robots.txt
+* URL: https://123132346.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/sitemap.xml
+* URL: https://123132346.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -236,19 +237,19 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 The web/application server is leaking version information via the "Server" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `Apache/2.4.52 (Ubuntu)`
   * Other Info: ``
-* URL: https://google0.ca/robots.txt
+* URL: https://123132346.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `Apache/2.4.52 (Ubuntu)`
   * Other Info: ``
-* URL: https://google0.ca/sitemap.xml
+* URL: https://123132346.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -286,7 +287,7 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: `x-content-type-options`
   * Attack: ``
@@ -315,6 +316,47 @@ If possible, ensure that the end user uses a standards-compliant and modern web 
 
 #### Source ID: 3
 
+### [ Loosely Scoped Cookie ](https://www.zaproxy.org/docs/alerts/90033/)
+
+
+
+##### Informational (Low)
+
+### Description
+
+Cookies can be scoped by domain or path. This check is only concerned with domain scope.The domain scope applied to a cookie determines which domains can access it. For example, a cookie can be scoped strictly to a subdomain e.g. www.nottrusted.com, or loosely scoped to a parent domain e.g. nottrusted.com. In the latter case, any subdomain of nottrusted.com can access the cookie. Loosely scoped cookies are common in mega-applications like google.com and live.com. Cookies set from a subdomain like app.foo.bar are transmitted only to that domain by the browser. However, cookies scoped to a parent-level domain may be transmitted to the parent, or any subdomain of the parent.
+
+* URL: https://123132346.google0.ca
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `The origin domain used for comparison was: 
+123132346.google0.ca
+CrmOwinAuth=ABCD
+`
+
+Instances: 1
+
+### Solution
+
+Always scope cookies to a FQDN (Fully Qualified Domain Name).
+
+### Reference
+
+
+* [ https://tools.ietf.org/html/rfc6265#section-4.1 ](https://tools.ietf.org/html/rfc6265#section-4.1)
+* [ https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html ](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html)
+* [ https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies ](https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies)
+
+
+#### CWE Id: [ 565 ](https://cwe.mitre.org/data/definitions/565.html)
+
+
+#### WASC Id: 15
+
+#### Source ID: 3
+
 ### [ Re-examine Cache-control Directives ](https://www.zaproxy.org/docs/alerts/10015/)
 
 
@@ -325,7 +367,7 @@ If possible, ensure that the end user uses a standards-compliant and modern web 
 
 The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: `cache-control`
   * Attack: ``
@@ -363,19 +405,19 @@ For secure content, ensure the cache-control HTTP header is set with "no-cache, 
 
 Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/robots.txt
+* URL: https://123132346.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/sitemap.xml
+* URL: https://123132346.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
@@ -411,19 +453,19 @@ Ensure that Sec-Fetch-Dest header is included in request headers.
 
 Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/robots.txt
+* URL: https://123132346.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/sitemap.xml
+* URL: https://123132346.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
@@ -459,19 +501,19 @@ Ensure that Sec-Fetch-Mode header is included in request headers.
 
 Specifies the relationship between request initiator's origin and target's origin.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/robots.txt
+* URL: https://123132346.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/sitemap.xml
+* URL: https://123132346.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
@@ -507,19 +549,19 @@ Ensure that Sec-Fetch-Site header is included in request headers.
 
 Specifies if a navigation request was initiated by a user.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/robots.txt
+* URL: https://123132346.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://google0.ca/sitemap.xml
+* URL: https://123132346.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
@@ -555,19 +597,19 @@ Ensure that Sec-Fetch-User header is included in user initiated requests.
 
 The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where "shared" caching servers such as "proxy" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.
 
-* URL: https://google0.ca
+* URL: https://123132346.google0.ca
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: https://google0.ca/robots.txt
+* URL: https://123132346.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: https://google0.ca/sitemap.xml
+* URL: https://123132346.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
