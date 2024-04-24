@@ -7,7 +7,7 @@ jobs:
     uses: llowgn/pipeline-templates/.github/workflows/owasp-scan.yaml@main
     with:
       ZAP_SCAN_TYPE: 'full' # Accepted values are base and full.
-      ZAP_TARGET_URL: https://123132346.google0.ca
+      ZAP_TARGET_URL: https://5323426346.google0.ca
       ZAP_DURATION: '2'
       ZAP_MAX_DURATION: '5'
       ZAP_GCP_PUBLISH: false
