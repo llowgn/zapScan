@@ -8,9 +8,9 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 | Risk Level | Number of Alerts |
 | --- | --- |
 | High | 0 |
-| Medium | 5 |
-| Low | 2 |
-| Informational | 8 |
+| Medium | 2 |
+| Low | 4 |
+| Informational | 7 |
 
 
 
@@ -19,21 +19,19 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 
 | Name | Risk Level | Number of Instances |
 | --- | --- | --- |
-| Bypassing 403 | Medium | 4 |
-| Content Security Policy (CSP) Header Not Set | Medium | 8 |
-| HTTP Only Site | Medium | 1 |
-| Missing Anti-clickjacking Header | Medium | 6 |
-| Sub Resource Integrity Attribute Missing | Medium | 6 |
-| Permissions Policy Header Not Set | Low | 9 |
-| X-Content-Type-Options Header Missing | Low | 11 |
-| Base64 Disclosure | Informational | 1 |
-| Information Disclosure - Suspicious Comments | Informational | 1 |
+| Content Security Policy (CSP) Header Not Set | Medium | 3 |
+| Missing Anti-clickjacking Header | Medium | 1 |
+| In Page Banner Information Leak | Low | 2 |
+| Permissions Policy Header Not Set | Low | 3 |
+| Server Leaks Version Information via "Server" HTTP Response Header Field | Low | 3 |
+| X-Content-Type-Options Header Missing | Low | 1 |
+| Loosely Scoped Cookie | Informational | 1 |
+| Re-examine Cache-control Directives | Informational | 1 |
 | Sec-Fetch-Dest Header is Missing | Informational | 3 |
 | Sec-Fetch-Mode Header is Missing | Informational | 3 |
 | Sec-Fetch-Site Header is Missing | Informational | 3 |
 | Sec-Fetch-User Header is Missing | Informational | 3 |
-| Storable and Cacheable Content | Informational | 11 |
-| User Agent Fuzzer | Informational | 48 |
+| Storable and Cacheable Content | Informational | 3 |
 
 
 
@@ -41,58 +39,6 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 ## Alert Detail
 
 
-
-### [ Bypassing 403 ](https://www.zaproxy.org/docs/alerts/40038/)
-
-
-
-##### Medium (Medium)
-
-### Description
-
-Bypassing 403 endpoints may be possible, the scan rule sent a payload that caused the response to be accessible (status code 200).
-
-* URL: http://www.itsecgames.com/
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: `x-original-url: /downloads`
-  * Evidence: ``
-  * Other Info: `http://www.itsecgames.com/downloads`
-* URL: http://www.itsecgames.com/
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: `x-original-url: /images`
-  * Evidence: ``
-  * Other Info: `http://www.itsecgames.com/images`
-* URL: http://www.itsecgames.com/
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: `x-original-url: /js`
-  * Evidence: ``
-  * Other Info: `http://www.itsecgames.com/js`
-* URL: http://www.itsecgames.com/
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: `x-original-url: /stylesheets`
-  * Evidence: ``
-  * Other Info: `http://www.itsecgames.com/stylesheets`
-
-Instances: 4
-
-### Solution
-
-
-
-### Reference
-
-
-* [ https://www.acunetix.com/blog/articles/a-fresh-look-on-reverse-proxy-related-attacks/ ](https://www.acunetix.com/blog/articles/a-fresh-look-on-reverse-proxy-related-attacks/)
-* [ https://i.blackhat.com/us-18/Wed-August-8/us-18-Orange-Tsai-Breaking-Parser-Logic-Take-Your-Path-Normalization-Off-And-Pop-0days-Out-2.pdf ](https://i.blackhat.com/us-18/Wed-August-8/us-18-Orange-Tsai-Breaking-Parser-Logic-Take-Your-Path-Normalization-Off-And-Pop-0days-Out-2.pdf)
-* [ https://www.contextis.com/en/blog/server-technologies-reverse-proxy-bypass ](https://www.contextis.com/en/blog/server-technologies-reverse-proxy-bypass)
-
-
-
-#### Source ID: 1
 
 ### [ Content Security Policy (CSP) Header Not Set ](https://www.zaproxy.org/docs/alerts/10038/)
 
@@ -104,56 +50,26 @@ Instances: 4
 
 Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
 
-* URL: http://www.itsecgames.com
+* URL: https://zapscan.google0.ca
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/
+* URL: https://zapscan.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/bugs.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/download.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/index.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/robots.txt
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/sitemap.xml
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/training.htm
+* URL: https://zapscan.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
 
-Instances: 8
+Instances: 3
 
 ### Solution
 
@@ -178,44 +94,6 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 #### Source ID: 3
 
-### [ HTTP Only Site ](https://www.zaproxy.org/docs/alerts/10106/)
-
-
-
-##### Medium (Medium)
-
-### Description
-
-The site is only served under HTTP and not HTTPS.
-
-* URL: http://www.itsecgames.com
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `Different Hosts.
-ZAP attempted to connect via: https://www.mmebvba.com`
-
-Instances: 1
-
-### Solution
-
-Configure your web or application server to use SSL (https).
-
-### Reference
-
-
-* [ https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html ](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html)
-* [ https://letsencrypt.org/ ](https://letsencrypt.org/)
-
-
-#### CWE Id: [ 311 ](https://cwe.mitre.org/data/definitions/311.html)
-
-
-#### WASC Id: 4
-
-#### Source ID: 1
-
 ### [ Missing Anti-clickjacking Header ](https://www.zaproxy.org/docs/alerts/10020/)
 
 
@@ -226,44 +104,14 @@ Configure your web or application server to use SSL (https).
 
 The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.
 
-* URL: http://www.itsecgames.com
-  * Method: `GET`
-  * Parameter: `x-frame-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/
-  * Method: `GET`
-  * Parameter: `x-frame-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/bugs.htm
-  * Method: `GET`
-  * Parameter: `x-frame-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/download.htm
-  * Method: `GET`
-  * Parameter: `x-frame-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/index.htm
-  * Method: `GET`
-  * Parameter: `x-frame-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/training.htm
+* URL: https://zapscan.google0.ca
   * Method: `GET`
   * Parameter: `x-frame-options`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
 
-Instances: 6
+Instances: 1
 
 ### Solution
 
@@ -283,69 +131,47 @@ If you expect the page to be framed only by pages on your server (e.g. it's part
 
 #### Source ID: 3
 
-### [ Sub Resource Integrity Attribute Missing ](https://www.zaproxy.org/docs/alerts/90003/)
+### [ In Page Banner Information Leak ](https://www.zaproxy.org/docs/alerts/10009/)
 
 
 
-##### Medium (High)
+##### Low (High)
 
 ### Description
 
-The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. 
+The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.
 
-* URL: http://www.itsecgames.com
+* URL: https://zapscan.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
-  * Other Info: ``
-* URL: http://www.itsecgames.com/
+  * Evidence: `Apache/2.4.52`
+  * Other Info: `There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.`
+* URL: https://zapscan.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
-  * Other Info: ``
-* URL: http://www.itsecgames.com/bugs.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
-  * Other Info: ``
-* URL: http://www.itsecgames.com/download.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
-  * Other Info: ``
-* URL: http://www.itsecgames.com/index.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
-  * Other Info: ``
-* URL: http://www.itsecgames.com/training.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter">`
-  * Other Info: ``
+  * Evidence: `Apache/2.4.52`
+  * Other Info: `There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.`
 
-Instances: 6
+Instances: 2
 
 ### Solution
 
-Provide a valid integrity attribute to the tag.
+Configure the server to prevent such information leaks. For example:
+Under Tomcat this is done via the "server" directive and implementation of custom error pages.
+Under Apache this is done via the "ServerSignature" and "ServerTokens" directives.
 
 ### Reference
 
 
-* [ https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity ](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
+* [ https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/ ](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/)
 
 
-#### CWE Id: [ 345 ](https://cwe.mitre.org/data/definitions/345.html)
+#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
 
 
-#### WASC Id: 15
+#### WASC Id: 13
 
 #### Source ID: 3
 
@@ -359,62 +185,26 @@ Provide a valid integrity attribute to the tag.
 
 Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.
 
-* URL: http://www.itsecgames.com
+* URL: https://zapscan.google0.ca
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/
+* URL: https://zapscan.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/bugs.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/download.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/index.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js/html5.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/robots.txt
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/sitemap.xml
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/training.htm
+* URL: https://zapscan.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
 
-Instances: 9
+Instances: 3
 
 ### Solution
 
@@ -437,6 +227,56 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 #### Source ID: 3
 
+### [ Server Leaks Version Information via "Server" HTTP Response Header Field ](https://www.zaproxy.org/docs/alerts/10036/)
+
+
+
+##### Low (High)
+
+### Description
+
+The web/application server is leaking version information via the "Server" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.
+
+* URL: https://zapscan.google0.ca
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.52 (Ubuntu)`
+  * Other Info: ``
+* URL: https://zapscan.google0.ca/robots.txt
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.52 (Ubuntu)`
+  * Other Info: ``
+* URL: https://zapscan.google0.ca/sitemap.xml
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.52 (Ubuntu)`
+  * Other Info: ``
+
+Instances: 3
+
+### Solution
+
+Ensure that your web server, application server, load balancer, etc. is configured to suppress the "Server" header or provide generic details.
+
+### Reference
+
+
+* [ https://httpd.apache.org/docs/current/mod/core.html#servertokens ](https://httpd.apache.org/docs/current/mod/core.html#servertokens)
+* [ https://learn.microsoft.com/en-us/previous-versions/msp-n-p/ff648552(v=pandp.10) ](https://learn.microsoft.com/en-us/previous-versions/msp-n-p/ff648552(v=pandp.10))
+* [ https://www.troyhunt.com/shhh-dont-let-your-response-headers/ ](https://www.troyhunt.com/shhh-dont-let-your-response-headers/)
+
+
+#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
+
+
+#### WASC Id: 13
+
+#### Source ID: 3
+
 ### [ X-Content-Type-Options Header Missing ](https://www.zaproxy.org/docs/alerts/10021/)
 
 
@@ -447,77 +287,7 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.
 
-* URL: http://www.itsecgames.com
-  * Method: `GET`
-  * Parameter: `x-content-type-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://www.itsecgames.com/
-  * Method: `GET`
-  * Parameter: `x-content-type-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://www.itsecgames.com/bugs.htm
-  * Method: `GET`
-  * Parameter: `x-content-type-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://www.itsecgames.com/download.htm
-  * Method: `GET`
-  * Parameter: `x-content-type-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://www.itsecgames.com/downloads/vulnerabilities.txt
-  * Method: `GET`
-  * Parameter: `x-content-type-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://www.itsecgames.com/images/favicon.ico
-  * Method: `GET`
-  * Parameter: `x-content-type-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://www.itsecgames.com/images/mme.png
-  * Method: `GET`
-  * Parameter: `x-content-type-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://www.itsecgames.com/images/twitter.png
-  * Method: `GET`
-  * Parameter: `x-content-type-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://www.itsecgames.com/js/html5.js
-  * Method: `GET`
-  * Parameter: `x-content-type-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://www.itsecgames.com/stylesheets/stylesheet.css
-  * Method: `GET`
-  * Parameter: `x-content-type-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://www.itsecgames.com/training.htm
+* URL: https://zapscan.google0.ca
   * Method: `GET`
   * Parameter: `x-content-type-options`
   * Attack: ``
@@ -525,7 +295,7 @@ At "High" threshold this scan rule will not alert on client or server error resp
   * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
 At "High" threshold this scan rule will not alert on client or server error responses.`
 
-Instances: 11
+Instances: 1
 
 ### Solution
 
@@ -546,43 +316,7 @@ If possible, ensure that the end user uses a standards-compliant and modern web 
 
 #### Source ID: 3
 
-### [ Base64 Disclosure ](https://www.zaproxy.org/docs/alerts/10094/)
-
-
-
-##### Informational (Medium)
-
-### Description
-
-Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).
-
-* URL: http://www.itsecgames.com/downloads/bWAPP_intro.pdf
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `8/Filter/DCTDecode/Interpolate`
-  * Other Info: `��b�׫�0��(u�Ȟ׫��Z�`
-
-Instances: 1
-
-### Solution
-
-Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.
-
-### Reference
-
-
-* [ https://projects.webappsec.org/w/page/13246936/Information%20Leakage ](https://projects.webappsec.org/w/page/13246936/Information%20Leakage)
-
-
-#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
-
-
-#### WASC Id: 13
-
-#### Source ID: 3
-
-### [ Information Disclosure - Suspicious Comments ](https://www.zaproxy.org/docs/alerts/10027/)
+### [ Loosely Scoped Cookie ](https://www.zaproxy.org/docs/alerts/90033/)
 
 
 
@@ -590,26 +324,71 @@ Manually confirm that the Base64 data does not leak sensitive information, and t
 
 ### Description
 
-The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.
+Cookies can be scoped by domain or path. This check is only concerned with domain scope.The domain scope applied to a cookie determines which domains can access it. For example, a cookie can be scoped strictly to a subdomain e.g. www.nottrusted.com, or loosely scoped to a parent domain e.g. nottrusted.com. In the latter case, any subdomain of nottrusted.com can access the cookie. Loosely scoped cookies are common in mega-applications like google.com and live.com. Cookies set from a subdomain like app.foo.bar are transmitted only to that domain by the browser. However, cookies scoped to a parent-level domain may be transmitted to the parent, or any subdomain of the parent.
 
-* URL: http://www.itsecgames.com/js/html5.js
+* URL: https://zapscan.google0.ca
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `select`
-  * Other Info: `The following pattern was used: \bSELECT\b and was detected in the element starting with: "(function(a,b){function h(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerH", see evidence field for the suspicious comment/snippet.`
+  * Evidence: ``
+  * Other Info: `The origin domain used for comparison was: 
+zapscan.google0.ca
+CrmOwinAuth=ABCD
+`
 
 Instances: 1
 
 ### Solution
 
-Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.
+Always scope cookies to a FQDN (Fully Qualified Domain Name).
 
 ### Reference
 
 
+* [ https://tools.ietf.org/html/rfc6265#section-4.1 ](https://tools.ietf.org/html/rfc6265#section-4.1)
+* [ https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html ](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html)
+* [ https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies ](https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies)
 
-#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
+
+#### CWE Id: [ 565 ](https://cwe.mitre.org/data/definitions/565.html)
+
+
+#### WASC Id: 15
+
+#### Source ID: 3
+
+### [ Re-examine Cache-control Directives ](https://www.zaproxy.org/docs/alerts/10015/)
+
+
+
+##### Informational (Low)
+
+### Description
+
+The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.
+
+* URL: https://zapscan.google0.ca
+  * Method: `GET`
+  * Parameter: `cache-control`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+
+Instances: 1
+
+### Solution
+
+For secure content, ensure the cache-control HTTP header is set with "no-cache, no-store, must-revalidate". If an asset should be cached consider setting the directives "public, max-age, immutable".
+
+### Reference
+
+
+* [ https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching ](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching)
+* [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
+* [ https://grayduck.mn/2021/09/13/cache-control-recommendations/ ](https://grayduck.mn/2021/09/13/cache-control-recommendations/)
+
+
+#### CWE Id: [ 525 ](https://cwe.mitre.org/data/definitions/525.html)
 
 
 #### WASC Id: 13
@@ -626,19 +405,19 @@ Remove all comments that return information that may help an attacker and fix an
 
 Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.
 
-* URL: http://www.itsecgames.com
+* URL: https://zapscan.google0.ca
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/
+* URL: https://zapscan.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/robots.txt
+* URL: https://zapscan.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
@@ -674,19 +453,19 @@ Ensure that Sec-Fetch-Dest header is included in request headers.
 
 Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.
 
-* URL: http://www.itsecgames.com
+* URL: https://zapscan.google0.ca
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/
+* URL: https://zapscan.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/robots.txt
+* URL: https://zapscan.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
@@ -722,19 +501,19 @@ Ensure that Sec-Fetch-Mode header is included in request headers.
 
 Specifies the relationship between request initiator's origin and target's origin.
 
-* URL: http://www.itsecgames.com
+* URL: https://zapscan.google0.ca
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/
+* URL: https://zapscan.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/robots.txt
+* URL: https://zapscan.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
@@ -770,19 +549,19 @@ Ensure that Sec-Fetch-Site header is included in request headers.
 
 Specifies if a navigation request was initiated by a user.
 
-* URL: http://www.itsecgames.com
+* URL: https://zapscan.google0.ca
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/
+* URL: https://zapscan.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://www.itsecgames.com/robots.txt
+* URL: https://zapscan.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
@@ -818,74 +597,26 @@ Ensure that Sec-Fetch-User header is included in user initiated requests.
 
 The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where "shared" caching servers such as "proxy" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.
 
-* URL: http://www.itsecgames.com
+* URL: https://zapscan.google0.ca
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://www.itsecgames.com/
+* URL: https://zapscan.google0.ca/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://www.itsecgames.com/bugs.htm
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://www.itsecgames.com/downloads/vulnerabilities.txt
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://www.itsecgames.com/images/favicon.ico
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://www.itsecgames.com/images/mme.png
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://www.itsecgames.com/js/html5.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://www.itsecgames.com/robots.txt
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://www.itsecgames.com/sitemap.xml
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://www.itsecgames.com/stylesheets/stylesheet.css
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://www.itsecgames.com/training.htm
+* URL: https://zapscan.google0.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
 
-Instances: 11
+Instances: 3
 
 ### Solution
 
@@ -909,319 +640,5 @@ This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers 
 #### WASC Id: 13
 
 #### Source ID: 3
-
-### [ User Agent Fuzzer ](https://www.zaproxy.org/docs/alerts/10104/)
-
-
-
-##### Informational (Medium)
-
-### Description
-
-Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.
-
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/downloads
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `msnbot/1.1 (+http://search.msn.com/msnbot.htm)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/images
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `msnbot/1.1 (+http://search.msn.com/msnbot.htm)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/js
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `msnbot/1.1 (+http://search.msn.com/msnbot.htm)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16`
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://www.itsecgames.com/stylesheets
-  * Method: `GET`
-  * Parameter: `Header User-Agent`
-  * Attack: `msnbot/1.1 (+http://search.msn.com/msnbot.htm)`
-  * Evidence: ``
-  * Other Info: ``
-
-Instances: 48
-
-### Solution
-
-
-
-### Reference
-
-
-* [ https://owasp.org/wstg ](https://owasp.org/wstg)
-
-
-
-#### Source ID: 1
 
 
